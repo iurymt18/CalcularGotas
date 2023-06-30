@@ -1,0 +1,157 @@
+JanelaGerenciadora:
+    JanelaPrincipal:
+    JanelaHoras:
+    JanelaMinutos:
+
+
+<JanelaPrincipal>:
+    name:'janelaprincipal'
+    BoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title: 'Gotejamento'
+            left_action_items: [["menu"]]
+            right_action_items: [["close", lambda x: app.fechar()]]
+        FloatLayout:
+            Image:
+                source:'logo.png'
+                pos_hint:{'center_x':.5, 'center_y':.75}
+
+            MDLabel:
+                text:'O calculo será em horas ou minutos?'
+                pos_hint:{'center_x':.5, 'center_y':.4}
+                size_hint_x:.9
+                halign:'center'
+                font_style:'Subtitle2'
+                font_size:'25'
+
+            MDFillRoundFlatIconButton:
+                icon:'clock-time-three-outline'
+                icon_size:'20sp'
+                text:'Horas'
+                font_size:'25sp'
+                size_hint_x:.3
+                pos_hint:{'center_x':.3, 'center_y':.2}
+                on_release:
+                    app.root.current = 'janelahoras'
+                    root.manager.transition.direction='left'
+
+
+            MDFillRoundFlatIconButton:
+                icon:'clock-time-three-outline'
+                icon_size:'20sp'
+                text:'Minutos'
+                font_size:'25sp'
+                size_hint_x:.3
+                pos_hint:{'center_x':.7, 'center_y':.2}
+                on_release:
+                    app.root.current = 'janelaminutos'
+                    root.manager.transition.direction='left'
+
+
+<JanelaHoras>
+    name:'janelahoras'
+    MDBoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title: 'Gotejamento horas'
+            left_action_items: [["menu"]]
+            right_action_items: [["close", lambda x: app.fechar()]]
+        FloatLayout:
+            MDTextField:
+                id:tempohoras
+                hint_text: "Horas"
+                halign:'center'
+                font_size:'25sp'
+                pos_hint:{'center_x':.5, 'center_y':.8}
+                size_hint_x:.6
+
+            MDTextField:
+                id:volumehoras
+                hint_text: "Volume total"
+                halign:'center'
+                font_size:'25sp'
+                pos_hint:{'center_x':.5, 'center_y':.6}
+                size_hint_x:.6
+
+            MDRectangleFlatIconButton:
+                id:calcularhoras
+                icon: "water"
+                text: "Calcular"
+                pos_hint:{'center_x':.5, 'center_y':.4}
+                size_hint_x:.3
+                on_press: root.calcular()
+
+            MDLabel:
+                id:respostahoras
+                text:''
+                font_style:'Subtitle2'
+                font_size:'30sp'
+                halign:'center'
+                pos_hint:{'center_x':.5, 'center_y':.2}
+
+
+
+            MDFloatingActionButton:
+                icon: "arrow-left"
+                pos_hint:{'center_x':.9, 'center_y':.1}
+                on_release:
+                    app.root.current = 'janelaprincipal'
+                    root.manager.transition.direction='right'
+                    root.limpar()
+
+
+
+<JanelaMinutos>
+    name:'janelaminutos'
+    MDBoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title: 'Gotejamento minutos'
+            left_action_items: [["menu"]]
+            right_action_items: [["close", lambda x: app.fechar()]]
+        FloatLayout:
+            MDTextField:
+                id:tempominutos
+                hint_text: "Minutos"
+                halign:'center'
+                font_size:'25sp'
+                pos_hint:{'center_x':.5, 'center_y':.8}
+                size_hint_x:.6
+
+            MDTextField:
+                id:volumeminutos
+                hint_text: "Volume total"
+                halign:'center'
+                font_size:'25sp'
+                pos_hint:{'center_x':.5, 'center_y':.6}
+                size_hint_x:.6
+
+            MDRectangleFlatIconButton:
+                id:calcularminutos
+                icon: "water"
+                text: "Calcular"
+                pos_hint:{'center_x':.5, 'center_y':.4}
+                size_hint_x:.3
+                on_press: root.calcular()
+
+            MDLabel:
+                id:respostaminutos
+                text:''
+                font_style:'Subtitle2'
+                font_size:'30sp'
+                halign:'center'
+                pos_hint:{'center_x':.5, 'center_y':.2}
+            MDFloatingActionButton:
+                icon: "arrow-left"
+                pos_hint:{'center_x':.9, 'center_y':.1}
+                on_release:
+                    app.root.current = 'janelaprincipal'
+                    root.manager.transition.direction='right'
+                    root.limpar()
+
+
+
+
+
+
